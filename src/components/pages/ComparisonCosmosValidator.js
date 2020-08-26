@@ -43,7 +43,7 @@ const ComparisonCosmosValidator = () => (
     <P>
       The Cosmos Hub is a Proof-of-Stake blockchain so the weight of each Validator is determined by how many ATOM tokens are staked. The ATOMs can be staked by the owner of the Validator directly or delegated by other ATOM holders. Currently, only the top 100 Validators with the most ATOMs staked will be Active Validators. The stake can be slashed for misbehavior, which currently describes two specific faults: double signing or downtime (<A href="https://hub.cosmos.network/master/validators/validator-faq.html">Source: Cosmos Hub Validator FAQ</A>).
 
-    </P>m
+    </P>
     <br />
 
     <H2>Rewards</H2>
