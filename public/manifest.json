@@ -1,0 +1,15 @@
+{
+  "short_name": "Keep Tools",
+  "name": "Keep Tools",
+  "icons": [
+    {
+      "src": "google-touch-icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
