@@ -4,11 +4,14 @@ import './index.css'
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router } from 'react-router-dom'
+import Analytics from 'react-router-ga'
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Analytics id="UA-176430647-1">
+        <App />
+      </Analytics>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
