@@ -153,7 +153,7 @@ class App extends React.Component {
               {
                 routes.map(({ path, exact, name, title, content, gitHubUrl }) => (
                   <Route exact={exact} path={path} key={path}>
-                    <Page name={name} title={title} onRender={this.updateGitHubUrl.bind(this, gitHubUrl)}>
+                    <Page name={name} title={title} onEffect={this.updateGitHubUrl.bind(this, gitHubUrl)}>
                       { content() }
                     </Page>
                   </Route>
@@ -167,9 +167,9 @@ class App extends React.Component {
   }
 }
 
-const Page = ({ name, title, children, match, onRender }) => {
-  onRender()
+const Page = ({ name, title, children, match, onEffect }) => {
   useEffect(() => {
+    onEffect()
     document.title = title || `${name} - Keep Tools`
   })
   return children
