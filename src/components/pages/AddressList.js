@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { H1, H2 } from '../common/H'
 import Table from '../common/Table'

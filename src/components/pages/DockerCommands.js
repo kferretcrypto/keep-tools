@@ -150,6 +150,7 @@ class DockerCommands extends React.Component {
         {
           FIELDS.map(field => (
             <TextInputWithLabel
+              key={field.name}
               label={field.name}
               placeholder={field.placeholder}
               value={fields[field.id]}
@@ -194,6 +195,7 @@ class DockerCommands extends React.Component {
 
 const CommandTextareaBig = styled.textarea.attrs(props => ({
   spellCheck: false,
+  readOnly: true,
 }))`
   width: 100%;
   height: 14em;
@@ -203,6 +205,7 @@ const CommandTextareaBig = styled.textarea.attrs(props => ({
 
 const CommandTextarea = styled.textarea.attrs(props => ({
   spellCheck: false,
+  readOnly: true,
 }))`
   width: 100%;
   height: 2em;

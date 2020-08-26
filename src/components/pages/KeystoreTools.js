@@ -78,6 +78,7 @@ const Button = styled.button`
 
 const Textarea = styled.textarea.attrs(props => ({
   spellCheck: false,
+  readOnly: true,
 }))`
   width: 100%;
   height: 10em;

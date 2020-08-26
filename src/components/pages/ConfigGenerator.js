@@ -147,11 +147,12 @@ class ConfigGenerator extends React.Component {
           templates.map(t => (
             [
               <RadioInput
+                key={t.id}
                 id={t.id}
                 checked={t.id === selectedTemplate}
                 onChange={() => { this.setState({ selectedTemplate: t.id }) }}
               />,
-              <label for={t.id}>
+              <label key={t.id+'-label'} htmlFor={t.id}>
                 { t.name }
               </label>,
             ]
@@ -164,6 +165,7 @@ class ConfigGenerator extends React.Component {
         {
           FIELDS.filter(field => template.fields.includes(field.id)).map(field => (
             <TextInputWithLabel
+              key={field.name}
               label={field.name}
               placeholder={field.placeholder}
               value={fields[field.id]}
@@ -188,6 +190,7 @@ const RadioInput = styled.input.attrs(props => ({
 
 const ConfigTextarea = styled.textarea.attrs(props => ({
   spellCheck: false,
+  readOnly: true,
 }))`
   width: 100%;
   height: 34em;
