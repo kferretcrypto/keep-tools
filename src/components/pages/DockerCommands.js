@@ -83,6 +83,14 @@ const PS_CMD = () => (
 `docker ps`
 )
 
+const LOGS_BEACON_CMD = () => (
+`docker logs beacon-node`
+)
+
+const LOGS_ECDSA_CMD = () => (
+`docker logs ecdsa-node`
+)
+
 const RESTART_BEACON_CMD = () => (
 `docker restart beacon-node`
 )
@@ -168,6 +176,11 @@ class DockerCommands extends React.Component {
         <H2>List Containers</H2>
         <Description>Use this to check the status of your nodes</Description>
         <CommandTextarea value={PS_CMD()} />
+
+        <H2>Logs</H2>
+        <Description>Add parameters like <code>--since 30m</code> for logs from past 30 minutes or <code>-f</code> to continuously follow logs</Description>
+        <CommandTextarea value={LOGS_BEACON_CMD()} stacked={true} />
+        <CommandTextarea value={LOGS_ECDSA_CMD()} />
 
         <H2>Restart</H2>
         <CommandTextarea value={RESTART_BEACON_CMD()} stacked={true} />
