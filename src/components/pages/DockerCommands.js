@@ -215,7 +215,7 @@ const CommandTextareaBig = styled.textarea.attrs(props => ({
   readOnly: true,
 }))`
   width: 100%;
-  height: 14em;
+  height: 16em;
   margin-bottom: 36px;
   box-sizing: border-box;
 `
