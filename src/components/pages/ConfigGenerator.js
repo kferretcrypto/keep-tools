@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import { H1, H2 } from '../common/H'
 import TextInputWithLabel from '../common/TextInputWithLabel'
 
-
-
 const FIELDS = [
   {
     id: 'infura_id',
@@ -36,8 +34,8 @@ const FIELDS = [
   },
 ]
 
-const BEACON_TEMPLATE = (v) => (
-`[ethereum]
+const BEACON_TEMPLATE = (v) =>
+  `[ethereum]
   URL = "wss://ropsten.infura.io/ws/v3/${v['infura_id']}"
   URLRPC = "https://ropsten.infura.io/v3/${v['infura_id']}"
 
@@ -57,10 +55,9 @@ const BEACON_TEMPLATE = (v) => (
 
 [Storage]
   DataDir = "/mnt/keep-beacon-client/persistence"`
-)
 
-const ECDSA_TEMPLATE = (v) => (
-`[ethereum]
+const ECDSA_TEMPLATE = (v) =>
+  `[ethereum]
   URL = "wss://ropsten.infura.io/ws/v3/${v['infura_id']}"
   URLRPC = "https://ropsten.infura.io/v3/${v['infura_id']}"
 
@@ -85,28 +82,18 @@ const ECDSA_TEMPLATE = (v) => (
 
 [TSS]
   PreParamsGenerationTimeout = "2m30s"`
-)
 
 const templates = [
   {
     id: 'beacon',
     name: 'Ropsten - Random Beacon',
-    fields: [
-      'infura_id',
-      'operator_address',
-      'beacon_keyfile',
-      'server_ip',
-    ],
+    fields: ['infura_id', 'operator_address', 'beacon_keyfile', 'server_ip'],
     template: BEACON_TEMPLATE,
   },
   {
     id: 'ecdsa',
     name: 'Ropsten - ECDSA',
-    fields: [
-      'infura_id',
-      'operator_address',
-      'ecdsa_keyfile',
-    ],
+    fields: ['infura_id', 'operator_address', 'ecdsa_keyfile'],
     template: ECDSA_TEMPLATE,
   },
 ]
@@ -117,10 +104,13 @@ class ConfigGenerator extends React.Component {
 
     this.state = {
       selectedTemplate: templates[0].id,
-      fields: FIELDS.reduce((fieldsObj, field) => ({
-        ...fieldsObj,
-        [field.id]: field.defaultValue || '',
-      }), {})
+      fields: FIELDS.reduce(
+        (fieldsObj, field) => ({
+          ...fieldsObj,
+          [field.id]: field.defaultValue || '',
+        }),
+        {}
+      ),
     }
   }
 
@@ -137,33 +127,31 @@ class ConfigGenerator extends React.Component {
   render() {
     const { selectedTemplate, fields } = this.state
 
-    const template = templates.find(t => t.id === selectedTemplate)
+    const template = templates.find((t) => t.id === selectedTemplate)
 
     return (
       <React.Fragment>
         <H1>Config Generator</H1>
         <H2>Template Type</H2>
-        {
-          templates.map(t => (
-            [
-              <RadioInput
-                key={t.id}
-                id={t.id}
-                checked={t.id === selectedTemplate}
-                onChange={() => { this.setState({ selectedTemplate: t.id }) }}
-              />,
-              <label key={t.id+'-label'} htmlFor={t.id}>
-                { t.name }
-              </label>,
-            ]
-          ))
-        }
+        {templates.map((t) => [
+          <RadioInput
+            key={t.id}
+            id={t.id}
+            checked={t.id === selectedTemplate}
+            onChange={() => {
+              this.setState({ selectedTemplate: t.id })
+            }}
+          />,
+          <label key={t.id + '-label'} htmlFor={t.id}>
+            {t.name}
+          </label>,
+        ])}
 
         <br />
         <br />
         <H2>Parameters</H2>
-        {
-          FIELDS.filter(field => template.fields.includes(field.id)).map(field => (
+        {FIELDS.filter((field) => template.fields.includes(field.id)).map(
+          (field) => (
             <TextInputWithLabel
               key={field.name}
               label={field.name}
@@ -171,8 +159,8 @@ class ConfigGenerator extends React.Component {
               value={fields[field.id]}
               onChange={this.handleFieldChange.bind(this, field.id)}
             />
-          ))
-        }
+          )
+        )}
         <br />
         <H2>Config Output (config/config.toml)</H2>
         <ConfigTextarea value={template.template(fields)} />
@@ -181,14 +169,16 @@ class ConfigGenerator extends React.Component {
   }
 }
 
-const RadioInput = styled.input.attrs(props => ({
+const RadioInput = styled.input.attrs((props) => ({
   type: 'radio',
 }))`
   margin: 0 10px 0 30px;
-  &:first-of-type { margin-left: 0; }
+  &:first-of-type {
+    margin-left: 0;
+  }
 `
 
-const ConfigTextarea = styled.textarea.attrs(props => ({
+const ConfigTextarea = styled.textarea.attrs((props) => ({
   spellCheck: false,
   readOnly: true,
 }))`
@@ -197,6 +187,5 @@ const ConfigTextarea = styled.textarea.attrs(props => ({
   margin-bottom: 36px;
   box-sizing: border-box;
 `
-
 
 export default ConfigGenerator

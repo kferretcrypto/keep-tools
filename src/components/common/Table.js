@@ -8,25 +8,21 @@ export const Table = ({ data }) => {
     <StyledTable>
       <THead>
         <TR>
-          {
-            data[0].map((cell, i) => (
-              <TH key={i} width={i === 0 ? '30%' : ''}>{cell}</TH>
-            ))
-          }
+          {data[0].map((cell, i) => (
+            <TH key={i} width={i === 0 ? '30%' : ''}>
+              {cell}
+            </TH>
+          ))}
         </TR>
       </THead>
       <TBody>
-        {
-          data.slice(1).map((row, i) => (
-            <TR key={i}>
-              {
-                row.map((cell, j) => (
-                  <TD key={j}>{cell}</TD>
-                ))
-              }
-            </TR>
-          ))
-        }
+        {data.slice(1).map((row, i) => (
+          <TR key={i}>
+            {row.map((cell, j) => (
+              <TD key={j}>{cell}</TD>
+            ))}
+          </TR>
+        ))}
       </TBody>
     </StyledTable>
   )
@@ -38,22 +34,19 @@ const StyledTable = styled.table`
   margin-bottom: 36px;
 `
 
-const THead = styled.thead`
-`
+const THead = styled.thead``
 
-const TBody = styled.tbody`
-`
+const TBody = styled.tbody``
 
 const TH = styled.th`
   padding: 6px 24px 6px 10px;
 
-  background-color: #48DBB4;
+  background-color: #48dbb4;
 
   text-align: left;
 `
 
-const TR = styled.tr`
-`
+const TR = styled.tr``
 
 const TD = styled.td`
   background-color: rgba(255, 255, 255, 0.8);

@@ -51,8 +51,8 @@ const FIELDS = [
   },
 ]
 
-const RUN_BEACON_CMD = (v) => (
-`docker run -d \\
+const RUN_BEACON_CMD = (v) =>
+  `docker run -d \\
 --entrypoint keep-client \\
 --restart always \\
 --volume ${v['beacon_config_path']}:/mnt/keep-beacon-client/config \\
@@ -65,10 +65,9 @@ const RUN_BEACON_CMD = (v) => (
 --name beacon-node \\
 -p 3920:3919 \\
 keepnetwork/keep-client:v1.3.0-rc --config /mnt/keep-beacon-client/config/config.toml start`
-)
 
-const RUN_ECDSA_CMD = (v) => (
-`docker run -d \\
+const RUN_ECDSA_CMD = (v) =>
+  `docker run -d \\
 --entrypoint keep-ecdsa \\
 --restart always \\
 --volume ${v['ecdsa_config_path']}:/mnt/keep-ecdsa-client/config \\
@@ -81,65 +80,43 @@ const RUN_ECDSA_CMD = (v) => (
 --name ecdsa-node \\
 -p 3919:3919 \\
 keepnetwork/keep-ecdsa-client:v1.2.0-rc --config /mnt/keep-ecdsa-client/config/config.toml start`
-)
 
-const PS_CMD = () => (
-`docker ps`
-)
+const PS_CMD = () => `docker ps`
 
-const LOGS_BEACON_CMD = () => (
-`docker logs beacon-node`
-)
+const LOGS_BEACON_CMD = () => `docker logs beacon-node`
 
-const LOGS_ECDSA_CMD = () => (
-`docker logs ecdsa-node`
-)
+const LOGS_ECDSA_CMD = () => `docker logs ecdsa-node`
 
-const RESTART_BEACON_CMD = () => (
-`docker restart beacon-node`
-)
+const RESTART_BEACON_CMD = () => `docker restart beacon-node`
 
-const RESTART_ECDSA_CMD = () => (
-`docker restart ecdsa-node`
-)
+const RESTART_ECDSA_CMD = () => `docker restart ecdsa-node`
 
-const STOP_BEACON_CMD = () => (
-`docker stop beacon-node`
-)
+const STOP_BEACON_CMD = () => `docker stop beacon-node`
 
-const STOP_ECDSA_CMD = () => (
-`docker stop ecdsa-node`
-)
+const STOP_ECDSA_CMD = () => `docker stop ecdsa-node`
 
-const START_BEACON_CMD = () => (
-`docker start beacon-node`
-)
+const START_BEACON_CMD = () => `docker start beacon-node`
 
-const START_ECDSA_CMD = () => (
-`docker start ecdsa-node`
-)
+const START_ECDSA_CMD = () => `docker start ecdsa-node`
 
-const RM_BEACON_CMD = () => (
-`docker rm beacon-node`
-)
+const RM_BEACON_CMD = () => `docker rm beacon-node`
 
-const RM_ECDSA_CMD = () => (
-`docker rm ecdsa-node`
-)
+const RM_ECDSA_CMD = () => `docker rm ecdsa-node`
 
-const HELP_CMD = () => (
-`docker help`
-)
+const HELP_CMD = () => `docker help`
 
 class DockerCommands extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      fields: FIELDS.reduce((fieldsObj, field) => ({
-        ...fieldsObj,
-        [field.id]: field.defaultValue || '',
-      }), {})
+      fields: FIELDS.reduce(
+        (fieldsObj, field) => ({
+          ...fieldsObj,
+          [field.id]: field.defaultValue || '',
+        }),
+        {}
+      ),
     }
   }
 
@@ -159,17 +136,15 @@ class DockerCommands extends React.Component {
       <React.Fragment>
         <H1>Docker Commands</H1>
         <H2>Parameters</H2>
-        {
-          FIELDS.map(field => (
-            <TextInputWithLabel
-              key={field.name}
-              label={field.name}
-              placeholder={field.placeholder}
-              value={fields[field.id]}
-              onChange={this.handleFieldChange.bind(this, field.id)}
-            />
-          ))
-        }
+        {FIELDS.map((field) => (
+          <TextInputWithLabel
+            key={field.name}
+            label={field.name}
+            placeholder={field.placeholder}
+            value={fields[field.id]}
+            onChange={this.handleFieldChange.bind(this, field.id)}
+          />
+        ))}
         <br />
         <H2>Setup and Start - Random Beacon</H2>
         <CommandTextareaBig value={RUN_BEACON_CMD(fields)} />
@@ -182,7 +157,10 @@ class DockerCommands extends React.Component {
         <CommandTextarea value={PS_CMD()} />
 
         <H2>Logs</H2>
-        <Description>Add parameters like <code>--since 30m</code> for logs from past 30 minutes or <code>-f</code> to continuously follow logs</Description>
+        <Description>
+          Add parameters like <code>--since 30m</code> for logs from past 30
+          minutes or <code>-f</code> to continuously follow logs
+        </Description>
         <CommandTextarea value={LOGS_BEACON_CMD()} stacked={true} />
         <CommandTextarea value={LOGS_ECDSA_CMD()} />
 
@@ -202,7 +180,6 @@ class DockerCommands extends React.Component {
         <CommandTextarea value={RM_BEACON_CMD()} stacked={true} />
         <CommandTextarea value={RM_ECDSA_CMD()} />
 
-
         <H2>Docker Help</H2>
         <CommandTextarea value={HELP_CMD()} />
       </React.Fragment>
@@ -210,7 +187,7 @@ class DockerCommands extends React.Component {
   }
 }
 
-const CommandTextareaBig = styled.textarea.attrs(props => ({
+const CommandTextareaBig = styled.textarea.attrs((props) => ({
   spellCheck: false,
   readOnly: true,
 }))`
@@ -220,13 +197,13 @@ const CommandTextareaBig = styled.textarea.attrs(props => ({
   box-sizing: border-box;
 `
 
-const CommandTextarea = styled.textarea.attrs(props => ({
+const CommandTextarea = styled.textarea.attrs((props) => ({
   spellCheck: false,
   readOnly: true,
 }))`
   width: 100%;
   height: 2em;
-  margin-bottom: ${props => props.stacked ? '4px' : '36px'};
+  margin-bottom: ${(props) => (props.stacked ? '4px' : '36px')};
   box-sizing: border-box;
 `
 
@@ -234,4 +211,4 @@ const Description = styled.p`
   margin: -4px 0 4px 0;
 `
 
- export default DockerCommands
+export default DockerCommands
