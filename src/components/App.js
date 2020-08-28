@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react'
-import {
-  Switch,
-  Route,
-} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import 'typeface-raleway'
@@ -28,7 +25,8 @@ const routes = [
     name: 'Home',
     title: 'Keep Tools',
     content: () => <Home routes={routes} />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/Home.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/Home.js',
   },
   {
     path: '/config-generator',
@@ -38,7 +36,8 @@ const routes = [
     description: `Fill out a form to generate configuration files for your Keep
       nodes`,
     content: () => <ConfigGenerator />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/ConfigGenerator.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/ConfigGenerator.js',
   },
   {
     path: '/docker-commands',
@@ -48,7 +47,8 @@ const routes = [
     description: `Cheatsheet for commands to create, start, restart, and inspect
       your Keep nodes`,
     content: () => <DockerCommands />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/DockerCommands.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/DockerCommands.js',
   },
   {
     path: '/faucets',
@@ -58,7 +58,8 @@ const routes = [
     description: `Get Ropsten ETH, Testnet BTC, and a KEEP token grant for
       testing purposes`,
     content: () => <Faucets />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/Faucets.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/Faucets.js',
   },
   {
     path: '/keystore-tools',
@@ -68,7 +69,8 @@ const routes = [
     description: `Generate an Ethereum wallet in the format required for the
       Keep node operator wallet`,
     content: () => <KeystoreTools />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/KeystoreTools.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/KeystoreTools.js',
   },
   {
     path: '/address-list',
@@ -78,7 +80,8 @@ const routes = [
     description: `An up-to-date list of all of the relevant Ethereum addresses
       associated with Keep`,
     content: () => <AddressList />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/AddressList.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/AddressList.js',
   },
   {
     path: '/github-repos',
@@ -88,7 +91,8 @@ const routes = [
     description: `A convenient index of GitHub repositories associated with
       the Keep project`,
     content: () => <GitHubRepos />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/GitHubRepos.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/GitHubRepos.js',
   },
   {
     path: '/comparison/cosmos-validator',
@@ -97,7 +101,8 @@ const routes = [
     name: 'Cosmos Validator',
     description: ``,
     content: () => <ComparisonCosmosValidator />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/ComparisonCosmosValidator.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/ComparisonCosmosValidator.js',
   },
   {
     path: '/comparison/renvm-darknode',
@@ -106,7 +111,8 @@ const routes = [
     name: 'RenVM Darknode',
     description: ``,
     content: () => <ComparisonRenVMDarknode />,
-    gitHubUrl: 'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/ComparisonRenVMDarknode.js',
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/ComparisonRenVMDarknode.js',
   },
 ]
 
@@ -150,15 +156,19 @@ class App extends React.Component {
           <LeftNav routes={routes} sections={sections} />
           <Content>
             <Switch>
-              {
-                routes.map(({ path, exact, name, title, content, gitHubUrl }) => (
+              {routes.map(
+                ({ path, exact, name, title, content, gitHubUrl }) => (
                   <Route exact={exact} path={path} key={path}>
-                    <Page name={name} title={title} onEffect={this.updateGitHubUrl.bind(this, gitHubUrl)}>
-                      { content() }
+                    <Page
+                      name={name}
+                      title={title}
+                      onEffect={this.updateGitHubUrl.bind(this, gitHubUrl)}
+                    >
+                      {content()}
                     </Page>
                   </Route>
-                ))
-              }
+                )
+              )}
             </Switch>
           </Content>
         </Body>
@@ -182,8 +192,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Layout = styled.div`
-`
+const Layout = styled.div``
 
 const Body = styled.div`
   margin: 0 auto;

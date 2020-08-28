@@ -7,15 +7,26 @@ import Table from '../common/Table'
 import A from '../common/A'
 
 const ropstenETHTableData = [
-    ['Faucet', 'Description'],
-    [<A href="https://faucet.metamask.io/">faucet.metamask.io</A>, '1 ETH x 5 times per hour, gets cranky if balance > 5 ETH'],
-    [<A href="https://teth.bitaps.com/">bitaps.com</A>, '1 ETH per minute'],
-    [<A href="https://faucet.ropsten.be/">faucet.ropsten.be</A>, 'Bans you for requesting frequently']
+  ['Faucet', 'Description'],
+  [
+    <A href="https://faucet.metamask.io/">faucet.metamask.io</A>,
+    '1 ETH x 5 times per hour, gets cranky if balance > 5 ETH',
+  ],
+  [<A href="https://teth.bitaps.com/">bitaps.com</A>, '1 ETH per minute'],
+  [
+    <A href="https://faucet.ropsten.be/">faucet.ropsten.be</A>,
+    'Bans you for requesting frequently',
+  ],
 ]
 
 const testnetBTCTableData = [
-    ['Faucet', 'Description'],
-    [<A href="https://bitcointalk.org/index.php?topic=5237763.0">bitcointalk.org</A>, 'List of Testnet BTC faucets with comments'],
+  ['Faucet', 'Description'],
+  [
+    <A href="https://bitcointalk.org/index.php?topic=5237763.0">
+      bitcointalk.org
+    </A>,
+    'List of Testnet BTC faucets with comments',
+  ],
 ]
 
 class Faucets extends React.Component {
@@ -74,5 +85,4 @@ const Button = styled.button`
   }
 `
 
-
- export default Faucets
+export default Faucets

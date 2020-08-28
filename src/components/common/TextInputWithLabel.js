@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const TextInputWithLabel = ({ label, onChange, value, placeholder, type }) => (
   <StyledTextInputWithLabel>
-    <Label>{ label }</Label>
+    <Label>{label}</Label>
     <Input
       onChange={onChange}
       value={value}
@@ -25,7 +25,7 @@ const Label = styled.label`
   flex: 1;
 `
 
-const Input = styled.input.attrs(props => ({
+const Input = styled.input.attrs((props) => ({
   type: props.type ? props.type : 'text',
   spellCheck: false,
   placeholder: props.placeholder,

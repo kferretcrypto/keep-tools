@@ -18,18 +18,11 @@ const Home = ({ routes }) => (
       <StyledTower />
     </Splash>
     <Cards>
-      {
-        routes
-          .filter(({ section }) => section === 'main')
-          .map(({ path, name, description }) => (
-            <Card
-              path={path}
-              name={name}
-              description={description}
-              key={path}
-            />
-          ))
-      }
+      {routes
+        .filter(({ section }) => section === 'main')
+        .map(({ path, name, description }) => (
+          <Card path={path} name={name} description={description} key={path} />
+        ))}
     </Cards>
 
     <H2>Comparison Guides</H2>
@@ -38,18 +31,11 @@ const Home = ({ routes }) => (
       about similarities and differences.
     </StyledP>
     <Cards>
-      {
-        routes
-          .filter(({ section }) => section === 'comparison')
-          .map(({ path, name, description }) => (
-            <Card
-              path={path}
-              name={name}
-              description={description}
-              key={path}
-            />
-          ))
-      }
+      {routes
+        .filter(({ section }) => section === 'comparison')
+        .map(({ path, name, description }) => (
+          <Card path={path} name={name} description={description} key={path} />
+        ))}
     </Cards>
   </React.Fragment>
 )
@@ -60,7 +46,7 @@ const Splash = styled.div`
   margin-bottom: 16px;
 
   padding: 0 20px;
-  background-color: #EEFFFA;
+  background-color: #eefffa;
   border-radius: 10px;
 `
 
@@ -98,13 +84,8 @@ const Cards = styled.div`
 const Card = ({ path, name, description }) => (
   <StyledLink to={path}>
     <StyledCard>
-      <StyledH2>{ name }</StyledH2>
-      {
-        description &&
-        <StyledP>
-          { description }
-        </StyledP>
-      }
+      <StyledH2>{name}</StyledH2>
+      {description && <StyledP>{description}</StyledP>}
     </StyledCard>
   </StyledLink>
 )
@@ -112,7 +93,7 @@ const Card = ({ path, name, description }) => (
 const StyledCard = styled.div`
   padding: 20px;
 
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
 
   transition: transform 0.2s;
@@ -145,7 +126,7 @@ const StyledP = styled.p`
   color: #363636;
   font-size: 14px;
   margin-top: 6px;
-  margin-bottom: ${props => props.marginBottom || 0};
+  margin-bottom: ${(props) => props.marginBottom || 0};
 `
 
 export default Home

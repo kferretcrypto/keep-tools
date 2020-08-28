@@ -15,10 +15,8 @@ const Header = ({ gitHubUrl }) => {
 
         <NavBarA href={gitHubUrl}>
           <IconGitHub />
-          &nbsp;
-          View on GitHub
+          &nbsp; View on GitHub
         </NavBarA>
-
       </NavBar>
     </StyledHeader>
   )
@@ -26,7 +24,7 @@ const Header = ({ gitHubUrl }) => {
 
 const StyledHeader = styled.header`
   height: 88px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `
 
 const NavBar = styled.div`
@@ -47,7 +45,7 @@ const StyledLogo = styled(Logo)`
   display: block;
 `
 
-const NavBarA = styled.a.attrs(props => ({
+const NavBarA = styled.a.attrs((props) => ({
   target: '_blank',
 }))`
   height: 30px;
