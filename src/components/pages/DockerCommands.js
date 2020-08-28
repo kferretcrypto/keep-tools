@@ -60,6 +60,8 @@ const RUN_BEACON_CMD = (v) => (
 --volume ${v['beacon_keystore_path']}:/mnt/keep-beacon-client/keystore \\
 --env KEEP_ETHEREUM_PASSWORD="${v['beacon_key_password']}" \\
 --env LOG_LEVEL=debug \\
+--log-opt max-size=100m \\
+--log-opt max-file=3 \\
 --name beacon-node \\
 -p 3920:3919 \\
 keepnetwork/keep-client:v1.3.0-rc --config /mnt/keep-beacon-client/config/config.toml start`
@@ -74,6 +76,8 @@ const RUN_ECDSA_CMD = (v) => (
 --volume ${v['ecdsa_keystore_path']}:/mnt/keep-ecdsa-client/keystore \\
 --env KEEP_ETHEREUM_PASSWORD="${v['ecdsa_key_password']}" \\
 --env LOG_LEVEL=debug \\
+--log-opt max-size=100m \\
+--log-opt max-file=3 \\
 --name ecdsa-node \\
 -p 3919:3919 \\
 keepnetwork/keep-ecdsa-client:v1.2.0-rc --config /mnt/keep-ecdsa-client/config/config.toml start`
