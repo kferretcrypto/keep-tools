@@ -44,9 +44,9 @@ const BEACON_TEMPLATE = (v) =>
   KeyFile = "/mnt/keep-beacon-client/keystore/${v['beacon_keyfile']}"
 
 [ethereum.ContractAddresses]
-  KeepRandomBeaconOperator = "0xf417b31104631280adF9F6828ee19985BC299fdC"
-  TokenStaking = "0x8117632eC1D514550b3880Bc68F9AC1A76c9C67B"
-  KeepRandomBeaconService = "0xd83248e311DC2Ba0d2A051e86f0678d8857f6ADD"
+  KeepRandomBeaconOperator = "0xC8337a94a50d16191513dEF4D1e61A6886BF410f"
+  TokenStaking = "0x234d2182B29c6a64ce3ab6940037b5C8FdAB608e"
+  KeepRandomBeaconService = "0x6c04499B595efdc28CdbEd3f9ed2E83d7dCCC717"
 
 [LibP2P]
   Peers = ["/dns4/bootstrap-1.core.keep.test.boar.network/tcp/3001/ipfs/16Uiu2HAkuTUKNh6HkfvWBEkftZbqZHPHi3Kak5ZUygAxvsdQ2UgG","/dns4/bootstrap-2.core.keep.test.boar.network/tcp/3001/ipfs/16Uiu2HAmQirGruZBvtbLHr5SDebsYGcq6Djw7ijF3gnkqsdQs3wK","/dns4/bootstrap-3.test.keep.network/tcp/3919/ipfs/16Uiu2HAm8KJX32kr3eYUhDuzwTucSfAfspnjnXNf9veVhB12t6Vf","/dns4/bootstrap-2.test.keep.network/tcp/3919/ipfs/16Uiu2HAmNNuCp45z5bgB8KiTHv1vHTNAVbBgxxtTFGAndageo9Dp"]
@@ -66,11 +66,11 @@ const ECDSA_TEMPLATE = (v) =>
   KeyFile = "/mnt/keep-ecdsa-client/keystore/${v['ecdsa_keyfile']}"
 
 [ethereum.ContractAddresses]
-  BondedECDSAKeepFactory = "0xb37c8696cD023c11357B37b5b12A9884c9C83784"
+  BondedECDSAKeepFactory = "0x9EcCf03dFBDa6A5E50d7aBA14e0c60c2F6c575E6"
 
 [SanctionedApplications]
   Addresses = [
-    "0x9F3B3bCED0AFfe862D436CB8FF462a454040Af80"
+    "0xc3f96306eDabACEa249D2D22Ec65697f38c6Da69"
   ]
 
 [LibP2P]
