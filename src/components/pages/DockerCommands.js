@@ -64,7 +64,7 @@ const RUN_BEACON_CMD = (v) =>
 --log-opt max-file=3 \\
 --name beacon-node \\
 -p 3920:3919 \\
-keepnetwork/keep-client:v1.3.0-rc.3 --config /mnt/keep-beacon-client/config/config.toml start`
+keepnetwork/keep-client:v1.3.0-rc.4 --config /mnt/keep-beacon-client/config/config.toml start`
 
 const RUN_ECDSA_CMD = (v) =>
   `docker run -d \\
@@ -79,7 +79,7 @@ const RUN_ECDSA_CMD = (v) =>
 --log-opt max-file=3 \\
 --name ecdsa-node \\
 -p 3919:3919 \\
-keepnetwork/keep-ecdsa-client:v1.2.0-rc.4 --config /mnt/keep-ecdsa-client/config/config.toml start`
+keepnetwork/keep-ecdsa-client:v1.2.0-rc.5 --config /mnt/keep-ecdsa-client/config/config.toml start`
 
 const PS_CMD = () => `docker ps`
 
