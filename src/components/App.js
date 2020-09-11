@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import 'typeface-raleway'
@@ -169,6 +169,9 @@ class App extends React.Component {
                   </Route>
                 )
               )}
+              <Route path="*">
+                <Redirect to="/" />
+              </Route>
             </Switch>
           </Content>
         </Body>
