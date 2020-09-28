@@ -34,7 +34,59 @@ const FIELDS = [
   },
 ]
 
-const BEACON_TEMPLATE = (v) =>
+// Mainnet
+const MAINNET_BEACON_TEMPLATE = (v) =>
+  `[ethereum]
+  URL = "wss://mainnet.infura.io/ws/v3/${v['infura_id']}"
+  URLRPC = "https://mainnet.infura.io/v3/${v['infura_id']}"
+
+[ethereum.account]
+  Address = "${v['operator_address']}"
+  KeyFile = "/mnt/keep-beacon-client/keystore/${v['beacon_keyfile']}"
+
+[ethereum.ContractAddresses]
+  KeepRandomBeaconOperator = "0xdf708431162ba247ddae362d2c919e0fbafcf9de"
+  TokenStaking = "0x1293a54e160d1cd7075487898d65266081a15458"
+  KeepRandomBeaconService = "0x50510e691c90ea098e3fdd23c311731bf394aafd"
+
+[LibP2P]
+  Peers = ["/ip4/54.39.179.73/tcp/3919/ipfs/16Uiu2HAkyYtzNoWuF3ULaA7RMfVAxvfQQ9YRvRT3TK4tXmuZtaWi","/ip4/54.39.186.166/tcp/3919/ipfs/16Uiu2HAkzD5n4mtTSddzqVY3wPJZmtvWjARTSpr4JbDX9n9PDJRh","/ip4/54.39.179.134/tcp/3919/ipfs/16Uiu2HAkuxCuWA4zXnsj9R6A3b3a1TKUjQvBpAEaJ98KGdGue67p","/dns4/bst-a01.core.keep.boar.network/tcp/3001/ipfs/16Uiu2HAkzYFHsqbwt64ZztWWK1hyeLntRNqWMYFiZjaKu1PZgikN","/dns4/bst-b01.core.keep.boar.network/tcp/3001/ipfs/16Uiu2HAkxLttmh3G8LYzAy1V1g1b3kdukzYskjpvv5DihY4wvx7D","/dns4/4d00662f-e56d-404a-803a-cac01ada3e15.keep.bison.run/tcp/3919/ipfs/16Uiu2HAmV3HqJjcbKMxHnDxDx4m2iEYynyYdsvU3VwaeE6Zra2P9","/dns4/ec1eb390-124c-4b1b-bcf7-c21709baf2b2.keep.herd.run/tcp/3919/ipfs/16Uiu2HAmVo51PqEZLADehZEbZnrp5A7qjRWFLj9E7DfwZKVhERFt","/dns4/2aa9b786-7360-4c22-ae73-bd95af9c11c5.keep.bison.run/tcp/3919/ipfs/16Uiu2HAm9g3QrQzSvJ8FAhgB1PmjMNgjPd3pDaJJqsdSisGsnaFe"]
+  Port = 3919
+  AnnouncedAddresses = ["/ip4/${v['server_ip']}/tcp/3920"]
+
+[Storage]
+  DataDir = "/mnt/keep-beacon-client/persistence"`
+
+const MAINNET_ECDSA_TEMPLATE = (v) =>
+  `[ethereum]
+  URL = "wss://mainnet.infura.io/ws/v3/${v['infura_id']}"
+  URLRPC = "https://mainnet.infura.io/v3/${v['infura_id']}"
+
+[ethereum.account]
+  Address = "${v['operator_address']}"
+  KeyFile = "/mnt/keep-ecdsa-client/keystore/${v['ecdsa_keyfile']}"
+
+[ethereum.ContractAddresses]
+  BondedECDSAKeepFactory = "0xA7d9E842EFB252389d613dA88EDa3731512e40bD"
+
+[SanctionedApplications]
+  Addresses = [
+    "0xe20A5C79b39bC8C363f0f49ADcFa82C2a01ab64a"
+  ]
+
+[LibP2P]
+  Peers = ["/dns4/bst-a01.ecdsa.keep.boar.network/tcp/4001/ipfs/16Uiu2HAkzYFHsqbwt64ZztWWK1hyeLntRNqWMYFiZjaKu1PZgikN","/dns4/bst-b01.ecdsa.keep.boar.network/tcp/4001/ipfs/16Uiu2HAkxLttmh3G8LYzAy1V1g1b3kdukzYskjpvv5DihY4wvx7D"]
+  Port = 3919
+
+[Storage]
+  DataDir = "/mnt/keep-ecdsa-client/persistence"
+
+[TSS]
+  PreParamsGenerationTimeout = "2m30s"`
+
+// Ropsten
+
+const ROPSTEN_BEACON_TEMPLATE = (v) =>
   `[ethereum]
   URL = "wss://ropsten.infura.io/ws/v3/${v['infura_id']}"
   URLRPC = "https://ropsten.infura.io/v3/${v['infura_id']}"
@@ -56,7 +108,7 @@ const BEACON_TEMPLATE = (v) =>
 [Storage]
   DataDir = "/mnt/keep-beacon-client/persistence"`
 
-const ECDSA_TEMPLATE = (v) =>
+const ROPSTEN_ECDSA_TEMPLATE = (v) =>
   `[ethereum]
   URL = "wss://ropsten.infura.io/ws/v3/${v['infura_id']}"
   URLRPC = "https://ropsten.infura.io/v3/${v['infura_id']}"
@@ -85,16 +137,28 @@ const ECDSA_TEMPLATE = (v) =>
 
 const templates = [
   {
-    id: 'beacon',
+    id: 'ropsten_beacon',
     name: 'Ropsten - Random Beacon',
     fields: ['infura_id', 'operator_address', 'beacon_keyfile', 'server_ip'],
-    template: BEACON_TEMPLATE,
+    template: ROPSTEN_BEACON_TEMPLATE,
   },
   {
-    id: 'ecdsa',
+    id: 'ropsten_ecdsa',
     name: 'Ropsten - ECDSA',
     fields: ['infura_id', 'operator_address', 'ecdsa_keyfile'],
-    template: ECDSA_TEMPLATE,
+    template: ROPSTEN_ECDSA_TEMPLATE,
+  },
+  {
+    id: 'mainnet_beacon',
+    name: 'Mainnet - Random Beacon',
+    fields: ['infura_id', 'operator_address', 'beacon_keyfile', 'server_ip'],
+    template: MAINNET_BEACON_TEMPLATE,
+  },
+  {
+    id: 'mainnet_ecdsa',
+    name: 'Mainnet - ECDSA',
+    fields: ['infura_id', 'operator_address', 'ecdsa_keyfile'],
+    template: MAINNET_ECDSA_TEMPLATE,
   },
 ]
 
@@ -142,9 +206,9 @@ class ConfigGenerator extends React.Component {
               this.setState({ selectedTemplate: t.id })
             }}
           />,
-          <label key={t.id + '-label'} htmlFor={t.id}>
+          <RadioInputLabel key={t.id + '-label'} htmlFor={t.id}>
             {t.name}
-          </label>,
+          </RadioInputLabel>,
         ])}
 
         <br />
@@ -172,10 +236,14 @@ class ConfigGenerator extends React.Component {
 const RadioInput = styled.input.attrs((props) => ({
   type: 'radio',
 }))`
-  margin: 0 10px 0 30px;
+  margin: 0 10px 0 20px;
   &:first-of-type {
     margin-left: 0;
   }
+`
+
+const RadioInputLabel = styled.label`
+  font-size: 14px;
 `
 
 const ConfigTextarea = styled.textarea.attrs((props) => ({
@@ -183,7 +251,7 @@ const ConfigTextarea = styled.textarea.attrs((props) => ({
   readOnly: true,
 }))`
   width: 100%;
-  height: 34em;
+  height: 38em;
   margin-bottom: 36px;
   box-sizing: border-box;
 `
