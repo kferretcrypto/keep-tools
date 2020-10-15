@@ -79,7 +79,7 @@ const RUN_ECDSA_CMD = (v) =>
 --log-opt max-file=3 \\
 --name ecdsa-node \\
 -p 3919:3919 \\
-keepnetwork/keep-ecdsa-client:v1.3.0 --config /mnt/keep-ecdsa-client/config/config.toml start`
+keepnetwork/keep-ecdsa-client:v1.4.0 --config /mnt/keep-ecdsa-client/config/config.toml start`
 
 const PS_CMD = () => `docker ps`
 
