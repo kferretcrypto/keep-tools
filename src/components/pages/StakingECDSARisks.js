@@ -34,17 +34,17 @@ const StakingECDSARisks = () => (
     </H3>
     <P>
       If your node is selected as a signer for a new deposit, all three signers
-      in the signing group have three hours to respond with a public key which
-      is used to create the bitcoin address for the deposit. If any node does
-      not respond within these three hours, anyone can call{' '}
+      in the signing group have up to three hours to respond with a public key
+      which is used to create the bitcoin address for the deposit. If any node
+      does not respond within these three hours, anyone can call{' '}
       <code>notifySignerSetupFailure</code>. Then the bonds will be unlocked but
       one-third of the setup fee will be permanently subtracted from each of the
       three node's bond balances. This deposit will also be considered
       terminated and not eligible for stakedrop rewards. If no one calls{' '}
       <code>notifySignerSetupFailure</code>, the bonds remain locked until it is
-      called. Common reasons for a node failing to respond is the node being
-      offline or the node not having enough ETH in the operator wallet to pay
-      for gas to submit transactions.
+      called. Common reasons for a node failing to respond include the node
+      being offline or the node not having enough ETH in the operator wallet to
+      pay for gas to submit transactions.
     </P>
     <br />
     <H3>
@@ -57,8 +57,8 @@ const StakingECDSARisks = () => (
       signature. Generating the signature requires the participation of all
       three nodes in the signing group. If the signature is not provided, anyone
       can call <code>notifyRedemptionSignatureTimeout</code> and this will start
-      a liquidation, where the bond gets auctioned off, the redeemer gets
-      replacement TBTC, and the auction remains are split between the reporter
+      a liquidation, where the bond gets auctioned off, the redeemer gets the
+      replacement TBTC, and the auction remainder are split between the reporter
       and the signing group. In this case, you can lose most of your bond or all
       of your bond for this deposit, depending on when the auction is completed.
       However, assuming that all three nodes still have the data associated with
@@ -72,11 +72,11 @@ const StakingECDSARisks = () => (
       equivalent to 110% of the deposit value), anyone can call{' '}
       <code>notifyUndercollateralizedLiquidation</code> and this will start a
       liquidation, where the bond gets auctioned off, the holder of the TDT
-      (token representing the deposit) gets replacement TBTC, and the auction
-      remains are split between the reporter and the signing group. If the
-      holder of the TDT is the tBTC vending machine, the replacement TBTC will
-      be burned. In this case, you can lose most of your bond or all of your
-      bond for this deposit, depending on when the auction is completed.
+      (token representing the deposit) gets the replacement TBTC, and the
+      auction remainder is split between the reporter and the signing group. If
+      the holder of the TDT is the tBTC vending machine, the replacement TBTC
+      will be burned. In this case, you can lose most of your bond or all of
+      your bond for this deposit, depending on when the auction is completed.
       However, assuming that all three nodes still have the data associated with
       the deposit and the three stakers agree to coordinate, the BTC deposited
       can be recovered and split between the three stakers.
@@ -114,8 +114,8 @@ const StakingECDSARisks = () => (
       redemption proof, but there is no incentive for doing so. If no one
       provides the redemption proof within six hours, anyone can call{' '}
       <code>notifyRedemptionProofTimedout</code> and this will start a
-      liquidation, where the bond gets auctioned off, the redeemer gets
-      replacement TBTC, and the auction remains are split between the reporter
+      liquidation, where the bond gets auctioned off, the redeemer gets the
+      replacement TBTC, and the auction remainder is split between the reporter
       and the signing group. In this case, you can lose most of your bond or all
       of your bond for this deposit, depending on when the auction is completed.
       However, because the BTC was already sent but the system has no proof it
@@ -132,7 +132,7 @@ const StakingECDSARisks = () => (
       low of a fee, and it is unable to be confirmed the required six times
       within the six hour limit. After six hours, anyone can call{' '}
       <code>notifyRedemptionProofTimedout</code> and this will start a
-      liquidation, where the bond gets auctioned off, the redeemer gets
+      liquidation, where the bond gets auctioned off, the redeemer gets the
       replacement TBTC, and the auction remains are split between the reporter
       and the signing group. In this case, you can lose most of your bond or all
       of your bond for this deposit, depending on when the auction is completed.
@@ -211,7 +211,7 @@ const StakingECDSARisks = () => (
       progresses normally. For example, if someone abandons the deposit, you can
       make sure that <code>retrieveSignerPubkey</code> is called and{' '}
       <code>notifyFundingTimedout</code> is called at the appropriate times. If
-      someone redeems a redeposit but does not submit the redemption proof, you
+      someone redeems a deposit but does not submit the redemption proof, you
       can submit the redemption proof. You also want to watch for the
       collateralization ratio falling too low, and redeem your own deposits that
       are at risk before it goes into liquidation.
@@ -221,25 +221,30 @@ const StakingECDSARisks = () => (
       you want to make sure that your node is never unfairly penalized. In the
       future, some of these watchdog activities may be built in to the node
       client itself, but until then, you should consider doing it yourself. The
-      most simple and manual way to do it is to use a deposit explorer, such as
-      All The Keeps. Simply navigate to your node's page in the Operators
-      section of All The Keeps. However, manually monitoring this page is very
-      time consuming. A trick to automate monitoring this is to use a monitoring
-      system to hit the relevant The Graph queries and notify you when certain
-      changes occur.
+      most simple and manual way to do it is to use a deposit explorer, such as{' '}
+      <A href="https://allthekeeps.com">All The Keeps</A>. Simply navigate to
+      your node's page in the{' '}
+      <A href="https://allthekeeps.com/operators">
+        Operators section of All The Keeps
+      </A>
+      . However, manually monitoring this page is very time consuming. A trick
+      to automate monitoring this is to use a monitoring system to hit the
+      relevant <A href="https://thegraph.com">The Graph</A> queries and notify
+      you when certain changes occur.
     </P>
     <br />
     <H3>Check the history of other nodes in your signing group</H3>
     <P>
       If you want to invest the effort and make sure as many deposits are
       successful as possible, you can watch each deposit that goes through your
-      node and inspect the other two nodes involved. Using a explorer like All
-      The Keeps, check the history of the other nodes. Do they have a good track
-      record? Have they been involved in manual faults? If it looks like they
-      have been responsible in many faults, their node might be operated poorly
-      with poor uptime. In that case, you might not want to be in a deposit with
-      them and risk the possibility they will be offline when needed for a
-      redemption in the future. To exit, simply redeem your the deposit.
+      node and inspect the other two nodes involved. Using a explorer like{' '}
+      <A href="https://allthekeeps.com">All The Keeps</A>, check the history of
+      the other nodes. Do they have a good track record? Have they been involved
+      in many faults? If it looks like they have been responsible in many
+      faults, their node might be operated poorly with poor uptime. In that
+      case, you might not want to be in a deposit with them and risk the
+      possibility they will be offline when needed for a redemption in the
+      future. To exit, simply redeem the deposit yourself.
     </P>
     <br />
     <H3>Monitor bitcoin transactions for redemptions</H3>
@@ -267,11 +272,12 @@ const StakingECDSARisks = () => (
       In the case of the collateralization ratio falling to risky levels on a
       deposit or simply if you want to exit a deposit because an operator with a
       poor track record is involved, you can redeem your own deposit if you have
-      enough TBTC. A tricky situation many people get into is they do not have
-      enough funds to get the TBTC necessary to redeem a deposit that their node
-      is part of. A good guideline to prevent this situation from occurring is
-      to always make sure that you have enough TBTC on hand to redeem the
-      largest deposit that your node can be part of, based on your bond balance.
+      enough TBTC and the TDT is in the tBTC vending machine. A tricky situation
+      many people get into is they do not have enough funds to get the TBTC
+      necessary to redeem a deposit that their node is part of. A good guideline
+      to prevent this situation from occurring is to always make sure that you
+      have enough TBTC on hand to redeem the largest deposit that your node can
+      be part of, based on your bond balance.
     </P>
     <br />
     <H3>Consider redeeming your node's older deposits</H3>
@@ -280,16 +286,16 @@ const StakingECDSARisks = () => (
       considering if you want to be extra safe. Consider that all three out of
       three nodes of each signing group need to be responsive for the entire
       duration of the deposit until it is redeemed or liquidated. This could be
-      as long as six months. Considering the entire six month timespan, the at
-      the beginning the risk of one or more of the nodes failing is close to
-      zero, because you know they were functioning well enough to facilitate
-      creating the deposit, and not enough time has passed for something bad as
-      happened. As more and more time passes, the likelihood increases that at
-      least one of the nodes will fail. Do you trust that all three nodes will
-      do their job six months from now? One way to reduce this risk is to redeem
-      the deposits your node is part of as they age. For example, you might
-      decide that any deposit that is more than two months old is too risky, so
-      you redeem all of those.
+      as long as six months. Considering the entire six month timespan, at the
+      beginning the risk of one or more of the nodes failing is close to zero,
+      because you know they were functioning well enough to facilitate creating
+      the deposit, and not enough time has passed for something bad to happen.
+      As more and more time passes, the likelihood increases that at least one
+      of the nodes will fail. Do you trust that all three nodes will do their
+      job six months from now? One way to reduce this risk is to redeem the
+      deposits your node is part of as they age. For example, you might decide
+      that any deposit that is more than two months old is too risky, so you
+      redeem all of those.
     </P>
     <br />
     <H2>Reference</H2>
