@@ -14,6 +14,7 @@ import Faucets from './pages/Faucets'
 import KeystoreTools from './pages/KeystoreTools'
 import AddressList from './pages/AddressList'
 import GitHubRepos from './pages/GitHubRepos'
+import StakingECDSARisks from './pages/StakingECDSARisks'
 import ComparisonCosmosValidator from './pages/ComparisonCosmosValidator'
 import ComparisonRenVMDarknode from './pages/ComparisonRenVMDarknode'
 
@@ -95,6 +96,16 @@ const routes = [
       'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/GitHubRepos.js',
   },
   {
+    path: '/staking/ecdsa-risks',
+    section: 'staking',
+    exact: true,
+    name: 'ECDSA Risks',
+    description: ``,
+    content: () => <StakingECDSARisks />,
+    gitHubUrl:
+      'https://github.com/kferretcrypto/keep-tools/tree/master/src/components/pages/StakingECDSARisks.js',
+  },
+  {
     path: '/comparison/cosmos-validator',
     section: 'comparison',
     exact: true,
@@ -124,6 +135,10 @@ const sections = [
   {
     id: 'main',
     name: null,
+  },
+  {
+    id: 'staking',
+    name: 'Staking Guides',
   },
   {
     id: 'comparison',

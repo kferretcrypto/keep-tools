@@ -25,6 +25,18 @@ const Home = ({ routes }) => (
         ))}
     </Cards>
 
+    <H2>Staking Guides</H2>
+    <StyledP marginBottom="16px">
+      Information to help you become a better staker for the Keep Network.
+    </StyledP>
+    <Cards>
+      {routes
+        .filter(({ section }) => section === 'staking')
+        .map(({ path, name, description }) => (
+          <Card path={path} name={name} description={description} key={path} />
+        ))}
+    </Cards>
+
     <H2>Comparison Guides</H2>
     <StyledP marginBottom="16px">
       For those participating in another network and considering Keep, learn
