@@ -69,12 +69,12 @@ const StakingECDSARisks = () => (
     <H3>Deposit collateral falls below the minimum</H3>
     <P>
       If the collateral backing a deposit falls below the minimum (currently ETH
-      equivalent to 110% of the deposit value), anyone can call{' '}
-      <code>notifyUndercollateralizedLiquidation</code> and this will start a
-      liquidation, where the bond gets auctioned off, the holder of the TDT
-      (token representing the deposit) gets the replacement TBTC, and the
-      auction remainder is split between the reporter and the signing group. If
-      the holder of the TDT is the tBTC vending machine, the replacement TBTC
+      equivalent to 110% of the deposit value or 125% for six or more hours),
+      anyone can call <code>notifyUndercollateralizedLiquidation</code> and this
+      will start a liquidation, where the bond gets auctioned off, the holder of
+      the TDT (token representing the deposit) gets the replacement TBTC, and
+      the auction remainder is split between the reporter and the signing group.
+      If the holder of the TDT is the tBTC vending machine, the replacement TBTC
       will be burned. In this case, you can lose most of your bond or all of
       your bond for this deposit, depending on when the auction is completed.
       However, assuming that all three nodes still have the data associated with
