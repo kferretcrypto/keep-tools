@@ -8,7 +8,7 @@ const StakingECDSARisks = () => (
   <React.Fragment>
     <H1>ECDSA Node Risks &amp; Mitigation Strategies</H1>
     <P>(AKA "How Not to Lose Money Staking for tBTC")</P>
-    <P>Last Updated: October 31, 2020</P>
+    <P>Last Updated: November 1, 2020</P>
     <H2>Introduction</H2>
     <P>
       This guide highlights some common ways people running ECDSA nodes can lose
