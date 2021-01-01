@@ -111,7 +111,6 @@ const StyledCard = styled.div`
   transition: transform 0.2s;
 
   @media only screen and (min-width: 980px) {
-    height: 100%;
     max-height: 84px;
   }
 
