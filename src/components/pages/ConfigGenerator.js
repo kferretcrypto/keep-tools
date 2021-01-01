@@ -82,7 +82,10 @@ const MAINNET_ECDSA_TEMPLATE = (v) =>
   DataDir = "/mnt/keep-ecdsa-client/persistence"
 
 [TSS]
-  PreParamsGenerationTimeout = "2m30s"`
+  PreParamsGenerationTimeout = "2m30s"
+  
+[Extensions.TBTC]
+  TBTCSystem = "0xe20A5C79b39bC8C363f0f49ADcFa82C2a01ab64a"`
 
 // Ropsten
 
@@ -133,7 +136,10 @@ const ROPSTEN_ECDSA_TEMPLATE = (v) =>
   DataDir = "/mnt/keep-ecdsa-client/persistence"
 
 [TSS]
-  PreParamsGenerationTimeout = "2m30s"`
+  PreParamsGenerationTimeout = "2m30s"
+ 
+[Extensions.TBTC]
+  TBTCSystem = "0xc3f96306eDabACEa249D2D22Ec65697f38c6Da69"`
 
 const templates = [
   {
@@ -251,7 +257,7 @@ const ConfigTextarea = styled.textarea.attrs((props) => ({
   readOnly: true,
 }))`
   width: 100%;
-  height: 38em;
+  height: 42em;
   margin-bottom: 36px;
   box-sizing: border-box;
 `
