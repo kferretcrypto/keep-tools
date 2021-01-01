@@ -7,7 +7,7 @@ import A from '../common/A'
 // Mainnet
 
 const mainnetTokenAddresses = [
-  ['KEEP', '0x85eee30c52b0b379b046fb0f85f4f3dc3009afec'],
+  ['KEEP', '0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC'],
   ['tBTC', '0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa'],
   ['tBTC Deposit Token (TDT)', '0x10B66Bd1e3b5a936B7f8Dbc5976004311037Cdf0'],
 ]
@@ -20,9 +20,9 @@ const mainnetTokenTableData = [['Name', 'Address']].concat(
 )
 
 const mainnetBeaconAddresses = [
-  ['TokenStaking', '0x1293a54e160d1cd7075487898d65266081a15458'],
-  ['KeepRandomBeaconService', '0x50510e691c90ea098e3fdd23c311731bf394aafd'],
-  ['KeepRandomBeaconOperator', '0xdf708431162ba247ddae362d2c919e0fbafcf9de'],
+  ['TokenStaking', '0x1293a54e160D1cd7075487898d65266081A15458'],
+  ['KeepRandomBeaconService', '0x50510E691c90EA098e3fdd23C311731BF394aAFd'],
+  ['KeepRandomBeaconOperator', '0xdF708431162Ba247dDaE362D2c919e0fbAfcf9DE'],
 ]
 
 const mainnetBeaconTableData = [['Name', 'Address']].concat(
